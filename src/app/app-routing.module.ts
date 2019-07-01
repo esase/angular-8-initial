@@ -11,6 +11,8 @@ import { GuestBookPage } from './pages/guest-book';
 import { LoginPage } from './pages/login';
 
 const routes: Routes = [
+    { path: 'customers', loadChildren: () => import('./customers/customers.module').then(mod => mod.CustomersModule) },
+    { path: 'orders', loadChildren: () => import('./orders/orders.module').then(mod => mod.OrdersModule) },
     { path: '', pathMatch: 'full', redirectTo: 'sample1' },
     { path: 'sample1', component: Sample1Page },
     { path: 'sample2/:id', component: Sample2Page },
