@@ -1,1 +1,15 @@
-<p>customer-list works!</p>
+<p>customer-list works!!</p>
+
+<!-- loading -->
+<div *ngIf="!(customersLoading$ | async)">
+    Loading...
+</div>
+
+<!-- customers -->
+<ng-container *ngIf="(customersLoading$ | async)">
+    <div *ngFor="let customer of customers$ | async">
+        {{ customer.name }}
+    </div>
+</ng-container>
+
+<button (click)="delete()">Clear the list</button>

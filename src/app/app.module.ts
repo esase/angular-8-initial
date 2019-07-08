@@ -3,6 +3,10 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule }   from '@angular/forms';
 import { JwtModule } from '@auth0/angular-jwt';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from '../environments/environment';
+import { EffectsModule } from '@ngrx/effects';
 
 import { AppRootComponent } from './root';
 import { AppRoutingModule } from './app-routing.module';
@@ -43,6 +47,13 @@ export function tokenGetter() {
         AutoSizeDirective
     ],
     imports: [
+        StoreModule.forRoot({
+        }),
+        StoreDevtoolsModule.instrument({ 
+            maxAge: 25, 
+            logOnly: environment.production 
+        }),
+        EffectsModule.forRoot([]),
         BrowserModule,
         HttpClientModule,
         FormsModule,
