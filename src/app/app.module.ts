@@ -30,6 +30,7 @@ import { FormatDateComponent } from './shared/components/format-date';
 
 // shared directives
 import { AutoSizeDirective } from './shared/directives/auto-size';
+import { GraphQLModule } from './graphql.module';
 
 export function tokenGetter() {
     return localStorage.getItem('token');
@@ -63,7 +64,8 @@ export function tokenGetter() {
                 tokenGetter: tokenGetter,
                 headerName: 'jwt'
             }
-        })
+        }),
+        GraphQLModule
     ],
     providers: [
         PagesService,
